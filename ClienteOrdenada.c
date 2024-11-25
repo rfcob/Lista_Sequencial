@@ -1,5 +1,5 @@
 // main.c
-#include "ListaOrdenada.h"
+#include "aloc_estatica/ListaOrdenada.h"
 
 int main() {
   LISTA lista;
