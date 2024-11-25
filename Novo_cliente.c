@@ -56,6 +56,13 @@ int main(){
     printf("Tamanho da lista (em bytes): %i.\n", tamanhoEmBytes(&lista));
 
     printf("Primeiro elemento da lista: %i.\n", primeiroElem(&lista));
+    
+    
+    printf("Chave 6 do elemento lista - retorna: %i.\n", enesimoElem(&lista, 6));
+
+    printf("O numero 6 está na posicão da lista: %i.\n", buscaSequencial(&lista, 6));
+
+    
 
     //printf("Tamanho da lista (em bytes): %i.\n", ((sizeof(LISTA) -8)- (tamListUser*4))); //Calculando o tamanho restante da lista supondo o alinhamento de 8bytes para o processador.
 

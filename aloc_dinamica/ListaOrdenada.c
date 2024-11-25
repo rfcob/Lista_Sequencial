@@ -114,12 +114,51 @@
 
   }
 
-//Retornar o primeiro elemento sequencial da lista ou erro se a lista estiver vazia|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//Retornar o primeiro elemento sequencial da lista ou erro se a lista estiver vazia||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 TIPOCHAVE primeiroElem(LISTA* l){
-  if(l->nroElem > 0) return l->A[0].chave;
-  else return ERRO; // lista vazia
+  if(l->nroElem > 0){
+    return l->A[0].chave;
+  }else{
+    return ERRO;
+    }
 } 
+
+//Retornar o último elemento sequencial da lista ou erro se a lista estiver vazia|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+TIPOCHAVE ultimoElem(LISTA* l) {
+  if(l->nroElem > 0){
+    return l->A[l->nroElem-1].chave;
+  }else{
+    return ERRO;
+    }
+}
+
+// Busca sequencial em lista ordenada ou não SEM SENTINELA |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+int buscaSequencial(LISTA* l, TIPOCHAVE ch) {
+
+  int i = 0;
+  while (i < l->nroElem){
+    if(ch == l->A[i].chave){
+      return i; //encontrou o numero
+    }else{
+      i++;
+    }
+  }
+  return ERRO; // não achou
+}
+
+// Retornar a chave do elemento que está na posição n da LISTA. Lembre-se que as posicoes do arranjo A vao de 0 a MAX-1|||||||||||||||
+
+TIPOCHAVE enesimoElem(LISTA* l, int n) {
+  if( (n >= 0) && (n < l->nroElem)){
+     return l->A[n].chave;
+  }else{
+  return ERRO;
+  } 
+}
+
 
 
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -132,39 +171,12 @@ TIPOCHAVE primeiroElem(LISTA* l){
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-/* Retornar a chave do primeiro elemento da lista sequencial (caso haja) e ERRO
-   caso a lista esteja vazia */
 
-
-/* Retornar a chave do ultimo elemento da lista sequencial (caso haja) e ERRO
-   caso a lista esteja vazia */
-TIPOCHAVE ultimoElem(LISTA* l) {
-  if(l->nroElem > 0) return l->A[l->nroElem-1].chave;
-  else return ERRO; // lista vazia
-} /* ultimoElem */
-
-/* Retornar a chave do elemento que está na posição n da LISTA. Lembre-se que as posicoes do
-   arranjo A vao de 0 a MAX-1  */
-TIPOCHAVE enesimoElem(LISTA* l, int n) {
-  if( (n >= 0) && (n < l->nroElem)) return l->A[n].chave ;
-  else return ERRO;
-} /* enesimoElem */
 
 /* Reinicializar a estrutura */
 void reinicializarLista(LISTA* l) {
   l->nroElem = 0;
 } /* reinicializarLista */
-
-
-/* Busca sequencial em lista ordenada ou não SEM SENTINELA */
-int buscaSequencial(LISTA* l, TIPOCHAVE ch) {
-  int i = 0;
-  while (i < l->nroElem){
-    if(ch == l->A[i].chave) return i; // achou
-    else i++;
-  }
-  return ERRO; // não achou
-} /* buscaSequencial */
 
 
 /* Busca sequencial em lista COM SENTINELA (vetor criado com MAX+1 posições) */
@@ -212,31 +224,6 @@ bool excluirElemLista(LISTA* l, TIPOCHAVE ch) {
   l->nroElem--;
   return true;
 } /* excluirElemLista */
-
-
-/* Exclusão do elemento cuja chave seja igual a ch em lista ordenada*/
-/*bool excluirElemListaOrd(LISTA* l, TIPOCHAVE ch) { 
-  int pos, j;
-  pos = buscaBinaria(l,ch);
-  if(pos == ERRO) return false; // não existe
-  for(j = pos; j < l->nroElem-1; j++) l->A[j] = l->A[j+1];
-  l->nroElem--;
-  return true;
-} /* excluirElemListaOrd */
-
-
-/* Inserção em lista ordenada usando busca binária permitindo duplicação */
-/*bool inserirElemListaOrd(LISTA* l, REGISTRO reg) {
-  if(l->nroElem >= MAX) return false; // lista cheia
-  int pos = l->nroElem;
-  while(pos > 0 && l->A[pos-1].chave > reg.chave) {
-    l->A[pos] = l->A[pos-1];
-    pos--;
-  }
-  l->A[pos] = reg;
-  l->nroElem++;
-  return true;
-} /* inserirElemListaOrd */
 
 
 /* Inserção em lista ordenada usando busca binária sem duplicação */
