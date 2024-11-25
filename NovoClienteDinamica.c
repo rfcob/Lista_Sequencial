@@ -3,33 +3,25 @@
 #include "aloc_dinamica/ListaOrdenada.h"
 #include "aloc_dinamica/ListaOrdenada.c"
 
+
+
 int main(){
 
-    int tamListUser, valorExcluir;
+    int valorExcluir;
 
     LISTA lista;
     REGISTRO reg;
     
-    inicializarLista(&lista);
+    inicializarLista(&lista); //-------------------------------------iniciar a lista com alocação dinâmica
 
-    printf("Digite a quantidade de itens a inserir:\n");
-    scanf("%d", &tamListUser);
-    
+    preencher_lista(&lista, reg); //---------------------------------------------------------------popular
 
-        for (int i = 0; i < tamListUser; i++) {
-
-            printf("Digite o valor: ");
-            scanf("%d", &reg.chave);
-            inserirElemListaOrd(&lista, reg);
-
-        }
-
-    exibirLista(&lista);
+    exibirLista(&lista);//--------------------------------------------------------------------primeira vez
 
     printf("Numero de elementos na lista: %i.\n", tamanho(&lista));
     printf("Tamanho da lista (em bytes): %i.\n", tamanhoEmBytes(&lista));
 
-    while(true){
+    while(true){//-----------------------------------para testar inlcusão e exclusão de maneira "dinamica"
         int escolha;
         printf("Digite 1 par exluir elementos ou 0 para sair:\n");
         scanf("%d", &escolha);
@@ -48,22 +40,14 @@ int main(){
         }
     }
 
-    excluirElemListaOrd(&lista, valorExcluir);
-
-    exibirLista(&lista);
+    exibirLista(&lista);//---------------------------------------------------------------------segunda vez
 
     printf("Numero de elementos na lista: %i.\n", tamanho(&lista));
     printf("Tamanho da lista (em bytes): %i.\n", tamanhoEmBytes(&lista));
 
     printf("Primeiro elemento da lista: %i.\n", primeiroElem(&lista));
-    
-    
     printf("Chave 6 do elemento lista - retorna: %i.\n", enesimoElem(&lista, 6));
-
     printf("O numero 6 está na posicão da lista: %i.\n", buscaSequencial(&lista, 6));
-
-    
-
     //printf("Tamanho da lista (em bytes): %i.\n", ((sizeof(LISTA) -8)- (tamListUser*4))); //Calculando o tamanho restante da lista supondo o alinhamento de 8bytes para o processador.
 
     free(lista.A);

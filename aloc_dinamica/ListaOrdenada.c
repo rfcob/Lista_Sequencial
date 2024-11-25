@@ -16,6 +16,27 @@
       l->alocacao = MAX; 
   }
 
+//função para preencher/popular a lista|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+  void preencher_lista(LISTA* lista, REGISTRO reg){
+
+      int tamListUser;
+
+      printf("Digite a quantidade de itens a inserir:\n");
+      scanf("%d", &tamListUser);
+      
+
+          for (int i = 0; i < tamListUser; i++)  {
+
+              printf("Digite o valor: ");
+              scanf("%d", &reg.chave);
+              inserirElemListaOrd(lista, reg);
+              //inserirElemListaOrdSemDup(lista, reg); 
+
+          }
+
+  }
+
 //Realocar espaço caso necessário||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
   void realocLista(LISTA *l) {
