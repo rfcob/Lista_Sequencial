@@ -34,8 +34,8 @@
 //Desalocar espaço caso necessário|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
   void desalocLista(LISTA *l) {
-
-    l->alocacao /= 2;
+    
+    l->alocacao/2;
 
     l->A = (REGISTRO*) realloc(l->A, l->alocacao * sizeof(REGISTRO));
 
@@ -57,62 +57,73 @@
       printf("\"\n");
   } 
 
-// Retornar o tamanho da lista (numero de elementos "validos")_____________________________________________________________
+// Retornar o tamanho da lista (numero de elementos "validos")||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
   int tamanho(LISTA* l){
     return l->nroElem;
   } 
 
 
-//* Retornar o tamanho da lista em bytes___________________________________________________________________________________ 
-  int tamanhoEmBytes(LISTA* l) {__
+//* Retornar o tamanho da lista em bytes|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  int tamanhoEmBytes(LISTA* l) {
     return l->nroElem * sizeof(REGISTRO);
   } 
 
-//Inserir elementos
+//Inserir elementos||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-bool inserirElemListaOrd(LISTA* l, REGISTRO reg) {
-    // Verificar se é necessário realocar a lista
-    if (l->nroElem >= l->alocacao) {
-        realocLista(l); // Realoca a lista se atingir a capacidade
-    }
+  bool inserirElemListaOrd(LISTA* l, REGISTRO reg) {
+      // Verificar se é necessário realocar a lista
+      if (l->nroElem >= l->alocacao) {
+          realocLista(l); // Realoca a lista se atingir a capacidade
+      }
 
-    int pos = l->nroElem;
-    while (pos > 0 && l->A[pos - 1].chave > reg.chave) {
-        l->A[pos] = l->A[pos - 1];
-        pos--;
-    }
-    l->A[pos] = reg;
-    l->nroElem++;
-    return true;
-} 
+      int pos = l->nroElem;
+      while (pos > 0 && l->A[pos - 1].chave > reg.chave) {
+          l->A[pos] = l->A[pos - 1];
+          pos--;
+      }
+      l->A[pos] = reg;
+      l->nroElem++;
+      return true;
+  } 
 
-//Exelcuir elemento na lista ordenada dinamicamente_______________________________
+//Exelcuir elemento na lista ordenada dinamicamente||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-bool excluirElemListaOrd(LISTA* l, TIPOCHAVE ch){ 
-  int pos, j;
-  int teste;
-  teste=l->alocacao/2;
-  pos = buscaBinaria(l,ch);
-  
+  bool excluirElemListaOrd(LISTA* l, TIPOCHAVE ch){ 
+      int pos, j;
+      int teste;
+      teste=l->alocacao/2;
+      pos = buscaBinaria(l,ch);
+      
 
-  if(pos == ERRO){
-    return false;
-  } // não existe
+      if(pos == ERRO){
+        return false;
+      } 
 
-  if (l->nroElem >= teste) {
-        realocLista(l); // Realoca a lista se atingir a capacidade
+      if (l->nroElem >= teste) {
+          desalocLista(l); 
+
+      for(j = pos; j < l->nroElem-1; j++){
+          l->A[j] = l->A[j+1];
+      }
+
+      l->nroElem--;
+
+      return true;
+    } 
+
   }
 
-  for(j = pos; j < l->nroElem-1; j++){
-     l->A[j] = l->A[j+1];
-  }
 
-  l->nroElem--;
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-  return true;
-} 
+//NÃO TESTADAS AINDA 
 
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 /* Retornar a chave do primeiro elemento da lista sequencial (caso haja) e ERRO
    caso a lista esteja vazia */
