@@ -26,6 +26,7 @@ typedef struct {
 // Declaração das funções
 void inicializarLista(LISTA* l);
 void exibirLista(LISTA* l);
+void preencher_lista(LISTA* l, REGISTRO reg);
 int tamanho(LISTA* l);
 int tamanhoEmBytes(LISTA* l);
 TIPOCHAVE primeiroElem(LISTA* l);
@@ -40,5 +41,6 @@ bool excluirElemLista(LISTA* l, TIPOCHAVE ch);
 bool excluirElemListaOrd(LISTA* l, TIPOCHAVE ch);
 bool inserirElemListaOrd(LISTA* l, REGISTRO reg);
 bool inserirElemListaOrdSemDup(LISTA* l, REGISTRO reg);
+
 
 #endif // LISTA_SEQUENCIAL_ORDENADA_H

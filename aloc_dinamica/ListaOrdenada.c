@@ -18,7 +18,7 @@
 
 //função para preencher/popular a lista|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-  void preencher_lista(LISTA* lista, REGISTRO reg){
+  void preencher_lista(LISTA* l, REGISTRO reg){
 
       int tamListUser;
 
@@ -30,7 +30,7 @@
 
               printf("Digite o valor: ");
               scanf("%d", &reg.chave);
-              inserirElemListaOrd(lista, reg);
+              inserirElemListaOrd(l, reg);
               //inserirElemListaOrdSemDup(lista, reg); 
 
           }
