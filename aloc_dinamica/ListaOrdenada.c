@@ -114,6 +114,13 @@
 
   }
 
+//Retornar o primeiro elemento sequencial da lista ou erro se a lista estiver vazia|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+TIPOCHAVE primeiroElem(LISTA* l){
+  if(l->nroElem > 0) return l->A[0].chave;
+  else return ERRO; // lista vazia
+} 
+
 
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -127,10 +134,7 @@
 
 /* Retornar a chave do primeiro elemento da lista sequencial (caso haja) e ERRO
    caso a lista esteja vazia */
-TIPOCHAVE primeiroElem(LISTA* l){
-  if(l->nroElem > 0) return l->A[0].chave;
-  else return ERRO; // lista vazia
-} /* primeiroElem */
+
 
 /* Retornar a chave do ultimo elemento da lista sequencial (caso haja) e ERRO
    caso a lista esteja vazia */

@@ -54,6 +54,9 @@ int main(){
 
     printf("Numero de elementos na lista: %i.\n", tamanho(&lista));
     printf("Tamanho da lista (em bytes): %i.\n", tamanhoEmBytes(&lista));
+
+    printf("Primeiro elemento da lista: %i.\n", primeiroElem(&lista));
+
     //printf("Tamanho da lista (em bytes): %i.\n", ((sizeof(LISTA) -8)- (tamListUser*4))); //Calculando o tamanho restante da lista supondo o alinhamento de 8bytes para o processador.
 
     free(lista.A);
