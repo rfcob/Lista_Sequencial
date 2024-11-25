@@ -5,7 +5,7 @@
 
 int main(){
 
-    int tamListUser;
+    int tamListUser, valorExcluir;
 
     LISTA lista;
     REGISTRO reg;
@@ -23,6 +23,32 @@ int main(){
             inserirElemListaOrd(&lista, reg);
 
         }
+
+    exibirLista(&lista);
+
+    printf("Numero de elementos na lista: %i.\n", tamanho(&lista));
+    printf("Tamanho da lista (em bytes): %i.\n", tamanhoEmBytes(&lista));
+
+    while(true){
+        int escolha;
+        printf("Digite 1 par exluir elementos ou 0 para sair:\n");
+        scanf("%d", &escolha);
+       if(escolha==1){
+            int quantidade;
+            printf("Digite quantos elementos deseja excluir: \n"); 
+            
+            scanf("%d", &quantidade);
+
+            for(int k = 0; k<quantidade; k++){
+                scanf("%d", &valorExcluir);
+                excluirElemListaOrd(&lista, valorExcluir);
+            }
+        }else{
+            break;
+        }
+    }
+
+    excluirElemListaOrd(&lista, valorExcluir);
 
     exibirLista(&lista);
 

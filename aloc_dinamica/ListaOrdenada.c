@@ -2,7 +2,7 @@
 #include "ListaOrdenada.h"
 
 
-// Inicialização da lista sequencial dinâmica (apontada pelo endereço em l)_____
+// Inicialização da lista sequencial dinâmica (apontada pelo endereço em l)||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
   void inicializarLista(LISTA* l){
       l->A = (REGISTRO*)malloc(MAX * sizeof(REGISTRO));
@@ -16,10 +16,26 @@
       l->alocacao = MAX; 
   }
 
-//Realocar espaço caso necessário________________________________________________
+//Realocar espaço caso necessário||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
   void realocLista(LISTA *l) {
 
     l->alocacao *= 2;
+
+    l->A = (REGISTRO*) realloc(l->A, l->alocacao * sizeof(REGISTRO));
+
+    if (l->A == NULL){
+      printf("Erro ao alocar memória\n");
+      exit(1);
+    }
+
+}
+
+//Desalocar espaço caso necessário|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+  void desalocLista(LISTA *l) {
+
+    l->alocacao /= 2;
 
     l->A = (REGISTRO*) realloc(l->A, l->alocacao * sizeof(REGISTRO));
 
@@ -30,7 +46,7 @@
 
 }
 
-// Exibir________________________________________________________________________
+// Exibir/Imprimir|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
   void exibirLista(LISTA* l){
       printf("Lista: \" ");
@@ -41,18 +57,61 @@
       printf("\"\n");
   } 
 
-// Retornar o tamanho da lista (numero de elementos "validos")___________________
+// Retornar o tamanho da lista (numero de elementos "validos")_____________________________________________________________
 
   int tamanho(LISTA* l){
     return l->nroElem;
   } 
 
 
-//* Retornar o tamanho da lista em bytes_________________________________________ 
-  int tamanhoEmBytes(LISTA* l) {
+//* Retornar o tamanho da lista em bytes___________________________________________________________________________________ 
+  int tamanhoEmBytes(LISTA* l) {__
     return l->nroElem * sizeof(REGISTRO);
   } 
 
+//Inserir elementos
+
+bool inserirElemListaOrd(LISTA* l, REGISTRO reg) {
+    // Verificar se é necessário realocar a lista
+    if (l->nroElem >= l->alocacao) {
+        realocLista(l); // Realoca a lista se atingir a capacidade
+    }
+
+    int pos = l->nroElem;
+    while (pos > 0 && l->A[pos - 1].chave > reg.chave) {
+        l->A[pos] = l->A[pos - 1];
+        pos--;
+    }
+    l->A[pos] = reg;
+    l->nroElem++;
+    return true;
+} 
+
+//Exelcuir elemento na lista ordenada dinamicamente_______________________________
+
+bool excluirElemListaOrd(LISTA* l, TIPOCHAVE ch){ 
+  int pos, j;
+  int teste;
+  teste=l->alocacao/2;
+  pos = buscaBinaria(l,ch);
+  
+
+  if(pos == ERRO){
+    return false;
+  } // não existe
+
+  if (l->nroElem >= teste) {
+        realocLista(l); // Realoca a lista se atingir a capacidade
+  }
+
+  for(j = pos; j < l->nroElem-1; j++){
+     l->A[j] = l->A[j+1];
+  }
+
+  l->nroElem--;
+
+  return true;
+} 
 
 
 /* Retornar a chave do primeiro elemento da lista sequencial (caso haja) e ERRO
@@ -141,7 +200,7 @@ bool excluirElemLista(LISTA* l, TIPOCHAVE ch) {
 
 
 /* Exclusão do elemento cuja chave seja igual a ch em lista ordenada*/
-bool excluirElemListaOrd(LISTA* l, TIPOCHAVE ch) { 
+/*bool excluirElemListaOrd(LISTA* l, TIPOCHAVE ch) { 
   int pos, j;
   pos = buscaBinaria(l,ch);
   if(pos == ERRO) return false; // não existe
@@ -163,24 +222,6 @@ bool excluirElemListaOrd(LISTA* l, TIPOCHAVE ch) {
   l->nroElem++;
   return true;
 } /* inserirElemListaOrd */
-
-bool inserirElemListaOrd(LISTA* l, REGISTRO reg) {
-    // Verificar se é necessário realocar a lista
-    if (l->nroElem >= l->alocacao) {
-        realocLista(l); // Realoca a lista se atingir a capacidade
-    }
-
-    int pos = l->nroElem;
-    while (pos > 0 && l->A[pos - 1].chave > reg.chave) {
-        l->A[pos] = l->A[pos - 1];
-        pos--;
-    }
-    l->A[pos] = reg;
-    l->nroElem++;
-    return true;
-} /* inserirElemListaOrd */
-
-
 
 
 /* Inserção em lista ordenada usando busca binária sem duplicação */
