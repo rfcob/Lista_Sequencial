@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "aloc_dinamica/ListaOrdenada.h"
-#include "aloc_dinamica/ListaOrdenada.c"
+#include "../include/ListaOrdenada.h"
+#include "../include/ListaOrdenada.c"
 
 
 
