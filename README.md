@@ -31,8 +31,7 @@
  - A Alocação dinâmica foi feita então seguindo essa escolha como mostra o recorte abaixo:
 
 ~~~C
-// Inicialização da lista sequencial dinâmica (apontada pelo endereço em l)||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
+// Inicialização da lista sequencial dinâmica (apontada pelo endereço em l)|||||||||||||
   void inicializarLista(LISTA* l){
       l->A = (REGISTRO*)malloc(MAX * sizeof(REGISTRO));
 
