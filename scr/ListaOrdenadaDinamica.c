@@ -1,5 +1,5 @@
 // ListaOrdenada.c
-#include "ListaOrdenada.h"
+#include "../include/ListaOrdenada.h"
 
 
 // Inicialização da lista sequencial dinâmica (apontada pelo endereço em l)||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
