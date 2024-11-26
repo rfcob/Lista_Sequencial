@@ -5,7 +5,7 @@
 // Inicialização da lista sequencial dinâmica (apontada pelo endereço em l)||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
   void inicializarLista(LISTA* l){
-      l->A = (REGISTRO*)malloc(MAX * sizeof(REGISTRO));
+      l->A = (REGISTRO*)malloc((MAX+1) * sizeof(REGISTRO));
 
       if (l->A == NULL) {
       printf("Erro ao alocar memória\n");
@@ -13,7 +13,7 @@
       }
 
       l->nroElem = 0;
-      l->alocacao = MAX; 
+      l->alocacao = MAX+1; 
   }
 
 //função para preencher/popular a lista|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -56,15 +56,15 @@
 
   void desalocLista(LISTA *l) {
     
-    l->alocacao/2;
+    l->alocacao /= 2;
 
-    l->A = (REGISTRO*) realloc(l->A, l->alocacao * sizeof(REGISTRO));
+    REGISTRO* temporario = (REGISTRO*) realloc(l->A, l->alocacao * sizeof(REGISTRO));
 
-    if (l->A == NULL){
+    if (temporario == NULL){
       printf("Erro ao alocar memória\n");
       exit(1);
   }
-
+  l->A=temporario;
 }
 
 // Exibir/Imprimir|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -84,10 +84,14 @@
     return l->nroElem;
   } 
 
-
 //* Retornar o tamanho da lista em bytes|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   int tamanhoEmBytes(LISTA* l) {
-    return l->nroElem * sizeof(REGISTRO);
+    return l->nroElem* sizeof(REGISTRO);
+  } 
+
+//* Retornar o tamanho da lista em bytes|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  int tamanhoEmBytesAlocado(LISTA* l) {
+    return l->alocacao * sizeof(REGISTRO);
   } 
 
 //Inserir elementos||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -116,19 +120,18 @@
       teste=l->alocacao/2;
       pos = buscaBinaria(l,ch);
       
-
       if(pos == ERRO){
         return false;
       } 
-
-      if (l->nroElem >= teste) {
-          desalocLista(l); 
 
       for(j = pos; j < l->nroElem-1; j++){
           l->A[j] = l->A[j+1];
       }
 
       l->nroElem--;
+
+      if (l->nroElem <= teste) {
+          desalocLista(l); 
 
       return true;
     } 

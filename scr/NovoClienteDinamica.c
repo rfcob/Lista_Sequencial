@@ -19,7 +19,8 @@ int main(){
     exibirLista(&lista);//--------------------------------------------------------------------primeira vez
 
     printf("Numero de elementos na lista: %i.\n", tamanho(&lista));
-    printf("Tamanho da lista (em bytes): %i.\n", tamanhoEmBytes(&lista));
+    printf("Tamanho da lista preenchida (em bytes): %i.\n", tamanhoEmBytes(&lista));
+    printf("Tamanho da lista, alocada, (em bytes): %i.\n", tamanhoEmBytesAlocado(&lista));
 
     while(true){//-----------------------------------para testar inlcusão e exclusão de maneira "dinamica"
         int escolha;
@@ -43,7 +44,8 @@ int main(){
     exibirLista(&lista);//---------------------------------------------------------------------segunda vez
 
     printf("Numero de elementos na lista: %i.\n", tamanho(&lista));
-    printf("Tamanho da lista (em bytes): %i.\n", tamanhoEmBytes(&lista));
+    printf("Tamanho da lista, preenchida, (em bytes): %i.\n", tamanhoEmBytes(&lista));
+    printf("Tamanho da lista, alocada, (em bytes): %i.\n", tamanhoEmBytesAlocado(&lista));
 
     printf("Primeiro elemento da lista: %i.\n", primeiroElem(&lista));
     printf("Chave 6 do elemento lista - retorna: %i.\n", enesimoElem(&lista, 6));

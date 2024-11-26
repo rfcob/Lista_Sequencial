@@ -29,6 +29,7 @@ void exibirLista(LISTA* l);
 void preencher_lista(LISTA* l, REGISTRO reg);
 int tamanho(LISTA* l);
 int tamanhoEmBytes(LISTA* l);
+int tamanhoEmBytesAlocado(LISTA* l); 
 TIPOCHAVE primeiroElem(LISTA* l);
 TIPOCHAVE ultimoElem(LISTA* l);
 TIPOCHAVE enesimoElem(LISTA* l, int n);
