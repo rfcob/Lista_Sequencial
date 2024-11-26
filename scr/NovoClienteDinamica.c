@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/ListaOrdenada.h"
-#include "../include/ListaOrdenada.c"
+#include "../include/ListaOrdenadaDinamica.h"
+#include "ListaOrdenadaDinamica.c"
 
 
 
