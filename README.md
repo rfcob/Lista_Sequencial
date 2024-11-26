@@ -5,7 +5,10 @@
 ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
 
 - A Atividade tem como objetivo modificar uma esttura de lista sequência definida com alocação de memória estática para uma alocação dinâmica.
-  
+
+- *O arquivo ListaOrdenadaDinamica contem uma definição para máximo (MAX=10). Isso está assim para fins de teste, uma vez que o usuário isere manualmente os dados, caso desejar, modifique esse valor*
+
+
 ### Escolhas:
 
 -  Uma struc do tipo inteiro, a tipo chave no qual definimos uma lista do tipo registo, mas com A como um ponteiro *A. Como tinhamos que dimensionar/alocar dinâmicamente um estrutua do tipo inteiro, como um array, essa escolha pareceu mais natural. Se tivessemos um cadasto do tipo cliente, com telefone, nome, etc, chamar apontar a própria struct com alocação dinâmica poderia ser mais interessante.
