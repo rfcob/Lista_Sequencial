@@ -1,5 +1,5 @@
 // ListaOrdenada.c
-#include "ListaOrdenada.h"
+#include "../include/ListaOrdenada.h"
 
 
 /* Inicialização da lista sequencial (a lista já está criada e é apontada pelo endereço em l) */
