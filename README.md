@@ -1,6 +1,6 @@
 # Lista_Sequencial
 
-## Repositório para entrega atividade 1 - Estrutura de dados
+## Repositório para entrega atividade 1 - Estrutura de dados ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
 
 - A Atividade tem como objetivo modificar uma esttura de lista sequência definida com alocação de memória estática para uma alocação dinâmica.
 - 
