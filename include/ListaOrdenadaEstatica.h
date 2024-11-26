@@ -3,8 +3,7 @@
 #define LISTA_SEQUENCIAL_ORDENADA_H
 
 #include <stdio.h>
-//#define MAX 50
-#define MAX 10
+#define MAX 50
 #define ERRO -1
 #define bool int
 #define true 1
@@ -18,15 +17,13 @@ typedef struct {
 } REGISTRO;
 
 typedef struct {
-  REGISTRO *A;
+  REGISTRO A[MAX+1];
   int nroElem;
-  int alocacao;
 } LISTA;
 
 // Declaração das funções
 void inicializarLista(LISTA* l);
 void exibirLista(LISTA* l);
-void preencher_lista(LISTA* l, REGISTRO reg);
 int tamanho(LISTA* l);
 int tamanhoEmBytes(LISTA* l);
 TIPOCHAVE primeiroElem(LISTA* l);
@@ -41,6 +38,5 @@ bool excluirElemLista(LISTA* l, TIPOCHAVE ch);
 bool excluirElemListaOrd(LISTA* l, TIPOCHAVE ch);
 bool inserirElemListaOrd(LISTA* l, REGISTRO reg);
 bool inserirElemListaOrdSemDup(LISTA* l, REGISTRO reg);
-
 
 #endif // LISTA_SEQUENCIAL_ORDENADA_H
