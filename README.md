@@ -6,7 +6,7 @@
 
 - A Atividade tem como objetivo modificar uma esttura de lista sequência definida com alocação de memória estática para uma alocação dinâmica.
 
-*O arquivo ListaOrdenadaDinamica contem uma definição para máximo (MAX=10). Isso está assim para fins de teste, uma vez que o usuário isere manualmente os dados, caso desejar, modifique esse valor*
+**O arquivo ListaOrdenadaDinamica contem uma definição para máximo (MAX=10). Isso está assim para fins de teste, uma vez que o usuário isere manualmente os dados, caso desejar, modifique esse valor**
 
 
 ### Escolhas:
